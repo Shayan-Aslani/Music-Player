@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.musicplayer.model.Song;
 import com.example.musicplayer.model.Repository;
@@ -64,6 +65,8 @@ public class TabFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         tabStatus = (TabStatus) getArguments().get(ARG_TAB_STATUS);
+
+
     }
 
     @Override
@@ -72,6 +75,7 @@ public class TabFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_tab, container, false);
         initUi(view);
+
         songsList = Repository.getInstance(getContext()).getSongs();
         switch (tabStatus){
             case SONGS:

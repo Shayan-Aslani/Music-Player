@@ -1057,6 +1057,7 @@ id add
 id alertTitle
 id all
 id always
+id artistName_TextView_NowPalying
 id artist_textView
 id artistname_textView_main
 id async
@@ -1093,6 +1094,7 @@ id dimensions
 id direct
 id disableHome
 id edit_query
+id elapsedTime_TextView
 id end
 id end_padder
 id enterAlways
@@ -1149,6 +1151,8 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id nowPlayingBar
+id nowPlaying_container_Layout
 id outline
 id packed
 id parallax
@@ -1197,6 +1201,8 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id songName_TextView_NowPlaying
+id songTime_TextView
 id songname_textview
 id spacer
 id split_action_bar
@@ -1296,6 +1302,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_nowplaying
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

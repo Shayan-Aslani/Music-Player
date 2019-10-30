@@ -22,6 +22,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.musicplayer.NowplayingActivity" />
         <activity android:name="com.example.musicplayer.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,6 +3,7 @@ package com.example.musicplayer.model;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -37,8 +38,9 @@ public class Repository {
         currentSong = songDao.queryBuilder()
                 .where(SongDao.Properties.NowPlaying.eq(true))
                 .unique();
-        if(currentSong == null)
-            currentSong = songDao.loadAll().get(0);
+
+            if(currentSong == null)
+                currentSong = songDao.loadAll().get(0);
 
     }
 

@@ -1,6 +1,7 @@
 package com.example.musicplayer;
 
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -17,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.musicplayer.model.Repository;
 import com.example.musicplayer.model.Song;
@@ -30,13 +33,14 @@ public class MainFragment extends Fragment {
 
     private ViewPager viewPager ;
     private ViewPagerAdapter viewPagerAdapter;
-    private  SeekBar timeSeekBar ;
-    private MediaPlayer mediaPlayer ;
+    private SeekBar timeSeekBar ;
+    public static MediaPlayer mediaPlayer ;
     private MaterialButton playButton ;
     private TextView nameTextView ;
     private TextView artistNameTextView ;
     private Handler mHandler = new Handler() ;
     private Song nowPlayingSong;
+    private ConstraintLayout nowPlayingBar ;
     public static MainFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -65,6 +69,7 @@ public class MainFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_main, container, false);
 
         initUi(view);
+        setupViewPager(view);
 
         if(nowPlayingSong!=null)
             setDetail(nowPlayingSong);
@@ -75,6 +80,12 @@ public class MainFragment extends Fragment {
             }
         });
 
+        nowPlayingBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(NowplayingActivity.newIntent(getContext()));
+            }
+        });
 
         nameTextView.setSelected(true);
 
@@ -84,7 +95,6 @@ public class MainFragment extends Fragment {
                 if (mediaPlayer != null) {
                     timeSeekBar.setProgress(mediaPlayer.getCurrentPosition() / 1000);
                 //    timeTextview.setText(String.valueOf(mediaPlayer.getCurrentPosition() / 1000));
-
                 }
                 mHandler.postDelayed(this, 1000);
             }
@@ -118,10 +128,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
-        viewPager.setAdapter(viewPagerAdapter);
-        TabLayout tabLayout = view.findViewById(R.id.tablayout);
-        tabLayout.setupWithViewPager(viewPager);
+
 
 
     }
@@ -132,6 +139,7 @@ public class MainFragment extends Fragment {
         playButton = view.findViewById(R.id.play_Button);
         nameTextView = view.findViewById(R.id.name_textView_main);
         artistNameTextView = view.findViewById(R.id.artistname_textView_main);
+        nowPlayingBar = view.findViewById(R.id.nowPlayingBar);
 
     }
 
@@ -142,6 +150,13 @@ public class MainFragment extends Fragment {
         timeSeekBar.setMax(mediaPlayer.getDuration() / 1000);
         Repository.getInstance(getContext()).setCurrentSong(song);
         nowPlayingSong = song;
+    }
+
+    public void setupViewPager(View view){
+        viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
+        TabLayout tabLayout = view.findViewById(R.id.tablayout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     public void setMediaPlayer(Song song){
