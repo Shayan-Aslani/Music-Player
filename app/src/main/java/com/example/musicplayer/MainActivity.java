@@ -1,5 +1,6 @@
 package com.example.musicplayer;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.main_container_layout, MainFragment.newInstance())
                     .commit();
     }
+
+
+
 
 
 

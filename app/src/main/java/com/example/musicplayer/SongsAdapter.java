@@ -120,18 +120,12 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongViewHold
                 @Override
                 public void onClick(View view) {
                     MainFragment mainFragment = (MainFragment) fragment.getActivity().getSupportFragmentManager().findFragmentById(R.id.main_container_layout);
-                  //  MainFragment.setMediaPlayer(song);
                     mainFragment.setMediaPlayer(song);
+                    mainFragment.onPlayButtonClicked();
                     Toast.makeText(mContext, song.getName(), Toast.LENGTH_SHORT).show();
                 }
             });
 
-/*
-            if (getAdapterPosition() % 2 == 0)
-                ((MaterialCardView) itemView).setCardBackgroundColor(0xFFBEC2FF);
-            else
-                ((MaterialCardView) itemView).setCardBackgroundColor(0x804250B2);
-*/
             songNameTextView.setText(song.getName());
             artistTextView.setText( song.getArtist());
         }

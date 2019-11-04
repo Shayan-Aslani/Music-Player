@@ -5319,7 +5319,7 @@ public final class R {
     public static final int textinput_error=0x7f0800ca;
     public static final int textinput_helper_text=0x7f0800cb;
     public static final int time=0x7f0800cc;
-    public static final int time_seekBar=0x7f0800cd;
+    public static final int time_ProgressBar=0x7f0800cd;
     public static final int time_seekbar_nowPlaying=0x7f0800ce;
     public static final int title=0x7f0800cf;
     public static final int titleDividerNoCustom=0x7f0800d0;

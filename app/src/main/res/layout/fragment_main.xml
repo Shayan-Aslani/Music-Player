@@ -15,44 +15,32 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintBottom_toTopOf="@+id/main_viewpager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/main_viewpager"
         android:layout_width="0dp"
-        android:layout_height="520dp"
-        app:layout_constraintBottom_toTopOf="@id/tablayout"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/nowPlayingBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tablayout">
+        app:layout_constraintTop_toBottomOf="@+id/tablayout"
+        app:layout_constraintVertical_bias="0.0">
 
     </androidx.viewpager.widget.ViewPager>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/nowPlayingBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_viewpager"
-        app:layout_constraintVertical_bias="0.952">
-
-        <SeekBar
-            android:id="@+id/time_seekBar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/play_Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_viewpager" />
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/play_Button"
@@ -63,8 +51,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/next_button"
             app:layout_constraintHorizontal_bias="0.541"
-            app:layout_constraintStart_toEndOf="@+id/previous_button"
-            app:layout_constraintTop_toBottomOf="@+id/time_seekBar" />
+            app:layout_constraintStart_toEndOf="@+id/previous_button" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/previous_button"
@@ -84,10 +71,13 @@
             android:id="@+id/next_button"
             android:layout_width="62dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             app:icon="@android:drawable/ic_media_next"
             app:iconGravity="textStart"
+            app:layout_constraintBottom_toBottomOf="@+id/play_Button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_seekBar" />
+            app:layout_constraintTop_toTopOf="@+id/play_Button" />
 
         <TextView
             android:id="@+id/name_textView_main"
@@ -115,6 +105,15 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/name_textView_main"
             app:layout_constraintTop_toBottomOf="@+id/name_textView_main" />
+
+        <ProgressBar
+            android:id="@+id/time_ProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

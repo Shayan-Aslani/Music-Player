@@ -1231,7 +1231,7 @@ int id textinput_counter 0x7f0800c9
 int id textinput_error 0x7f0800ca
 int id textinput_helper_text 0x7f0800cb
 int id time 0x7f0800cc
-int id time_seekBar 0x7f0800cd
+int id time_ProgressBar 0x7f0800cd
 int id time_seekbar_nowPlaying 0x7f0800ce
 int id title 0x7f0800cf
 int id titleDividerNoCustom 0x7f0800d0

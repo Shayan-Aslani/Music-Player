@@ -1232,7 +1232,7 @@ id textinput_counter
 id textinput_error
 id textinput_helper_text
 id time
-id time_seekBar
+id time_ProgressBar
 id time_seekbar_nowPlaying
 id title
 id titleDividerNoCustom

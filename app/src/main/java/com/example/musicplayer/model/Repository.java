@@ -1,6 +1,8 @@
 package com.example.musicplayer.model;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
@@ -8,6 +10,9 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import androidx.core.content.ContextCompat;
+
+import com.example.musicplayer.MainActivity;
 import com.example.musicplayer.greendao.SongOpenHelper;
 
 import java.util.List;
@@ -33,7 +38,9 @@ public class Repository {
         DaoSession daoSession = daoMaster.newSession();
 
         songDao = daoSession.getSongDao();
-        loadSongs();
+        if(ContextCompat.checkSelfPermission(
+                mContext, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
+            loadSongs();
 
         currentSong = songDao.queryBuilder()
                 .where(SongDao.Properties.NowPlaying.eq(true))
