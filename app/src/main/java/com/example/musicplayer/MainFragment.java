@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class MainFragment extends Fragment {
     private int songIndex ;
     private List<Song> songList ;
     private ConstraintLayout nowPlayingBar ;
+
     public static MainFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -62,6 +64,12 @@ public class MainFragment extends Fragment {
         songList = Repository.getInstance(getContext()).getSongs();
         nowPlayingSong = Repository.getInstance(getContext()).getCurrntSong();
         songIndex = songList.indexOf(nowPlayingSong);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setDetail(Repository.getInstance(getContext()).getCurrntSong());
     }
 
     @Override

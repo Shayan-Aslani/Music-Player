@@ -1054,11 +1054,13 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id albumname_textview_album
 id alertTitle
 id all
 id always
 id artistName_TextView_NowPalying
 id artist_textView
+id artist_textView_album
 id artistname_textView_main
 id async
 id auto
@@ -1118,6 +1120,7 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageView
 id imageView_nowPlaying
 id info
 id invisible
@@ -1203,6 +1206,7 @@ id snap
 id snapMargins
 id songName_TextView_NowPlaying
 id songTime_TextView
+id song_imageView
 id songname_textview
 id spacer
 id split_action_bar
@@ -1303,6 +1307,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_nowplaying
+layout albums_row
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

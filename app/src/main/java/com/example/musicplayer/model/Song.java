@@ -1,34 +1,23 @@
 package com.example.musicplayer.model;
 
-import com.example.musicplayer.greendao.UUIDConverter;
-
-import org.greenrobot.greendao.annotation.Convert;
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Index;
-import org.greenrobot.greendao.annotation.Property;
-
 import java.util.UUID;
-import org.greenrobot.greendao.annotation.Generated;
-
-@Entity(nameInDb = "song")
 public class Song {
 
-    @Id(autoincrement = true)
-    private Long _id;
-    @Property(nameInDb = "path")
     private String path ;
-    @Property(nameInDb = "name")
     private String name ;
-    @Property(nameInDb = "artist")
     private String artist ;
-    @Property(nameInDb = "album")
     private String album ;
-    @Property(nameInDb = "nowPlaying")
+    private String songFullPath ;
+
+    public String getSongFullPath() {
+        return songFullPath;
+    }
+
+    public void setSongFullPath(String songFullPath) {
+        this.songFullPath = songFullPath;
+    }
+
     private boolean nowPlaying = false;
-    @Property(nameInDb = "id")
-    @Index(unique = true)
-    @Convert(converter = UUIDConverter.class, columnType = String.class)
     private UUID songId;
 
     public Song(String path, String name, String artist, String album) {
@@ -43,25 +32,6 @@ public class Song {
 
     }
 
-    @Generated(hash = 2119277412)
-    public Song(Long _id, String path, String name, String artist, String album,
-            boolean nowPlaying, UUID songId) {
-        this._id = _id;
-        this.path = path;
-        this.name = name;
-        this.artist = artist;
-        this.album = album;
-        this.nowPlaying = nowPlaying;
-        this.songId = songId;
-    }
-
-    public Long get_id() {
-        return this._id;
-    }
-
-    public void set_id(Long _id) {
-        this._id = _id;
-    }
 
     public String getPath() {
         return this.path;

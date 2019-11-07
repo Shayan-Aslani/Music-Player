@@ -22,7 +22,7 @@
 15        android:allowBackup="true"
 15-->C:\Users\asus\AndroidStudioProjects\MusicPlayer\app\src\main\AndroidManifest.xml:9:9-35
 16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.0.1] C:\Users\asus\.gradle\caches\transforms-2\files-2.1\8bea631012afd5301e625c46e03af683\core-1.0.1\AndroidManifest.xml:22:18-86
+16-->[androidx.core:core:1.0.1] C:\Users\asus\.gradle\caches\transforms-2\files-2.1\46da25c3e2ae6308b2227b660caa604d\core-1.0.1\AndroidManifest.xml:22:18-86
 17        android:debuggable="true"
 18        android:icon="@mipmap/ic_launcher"
 18-->C:\Users\asus\AndroidStudioProjects\MusicPlayer\app\src\main\AndroidManifest.xml:10:9-43
@@ -54,6 +54,15 @@
 30-->C:\Users\asus\AndroidStudioProjects\MusicPlayer\app\src\main\AndroidManifest.xml:21:27-74
 31            </intent-filter>
 32        </activity>
-33    </application>
-34
-35</manifest>
+33
+34        <provider
+34-->[com.squareup.picasso:picasso:2.71828] C:\Users\asus\.gradle\caches\transforms-2\files-2.1\4d9bca319fbf37b03e947987fd42b23f\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+35            android:name="com.squareup.picasso.PicassoProvider"
+35-->[com.squareup.picasso:picasso:2.71828] C:\Users\asus\.gradle\caches\transforms-2\files-2.1\4d9bca319fbf37b03e947987fd42b23f\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+36            android:authorities="com.example.musicplayer.com.squareup.picasso"
+36-->[com.squareup.picasso:picasso:2.71828] C:\Users\asus\.gradle\caches\transforms-2\files-2.1\4d9bca319fbf37b03e947987fd42b23f\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+37            android:exported="false" />
+37-->[com.squareup.picasso:picasso:2.71828] C:\Users\asus\.gradle\caches\transforms-2\files-2.1\4d9bca319fbf37b03e947987fd42b23f\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+38    </application>
+39
+40</manifest>

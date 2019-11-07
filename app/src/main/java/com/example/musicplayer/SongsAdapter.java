@@ -2,10 +2,12 @@ package com.example.musicplayer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,13 +16,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicplayer.model.Song;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongViewHolder> implements Filterable {
 
-    public static final String TASK_DETAIL_FRAGMENT_TAG = "TaskDetail";
+
 
 
     private List<Song> songList;
@@ -73,6 +76,8 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongViewHold
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
 
+
+
                 if (charString.isEmpty()) {
                     filteredSongList = songList;
                 } else {
@@ -87,7 +92,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongViewHold
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = filteredSongList;
+                        filterResults.values = filteredSongList;
                 return filterResults;
             }
 
@@ -104,12 +109,14 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongViewHold
     public class SongViewHolder extends RecyclerView.ViewHolder {
         private TextView songNameTextView;
         private TextView artistTextView;
-
+        private ImageView songImageView;
 
         public SongViewHolder(@NonNull final View itemView) {
             super(itemView);
             songNameTextView = itemView.findViewById(R.id.songname_textview);
             artistTextView = itemView.findViewById(R.id.artist_textView);
+            songImageView = itemView.findViewById(R.id.song_imageView);
+
 
         }
 
@@ -126,6 +133,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.SongViewHold
                 }
             });
 
+            Picasso.get().load(Uri.parse(song.getSongFullPath())).resize(200 , 200).into(songImageView);
             songNameTextView.setText(song.getName());
             artistTextView.setText( song.getArtist());
         }

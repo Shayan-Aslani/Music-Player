@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.musicplayer.model.Album;
 import com.example.musicplayer.model.Song;
 import com.example.musicplayer.model.Repository;
 
@@ -30,6 +31,7 @@ public class TabFragment extends Fragment {
     private RecyclerView recyclerView ;
     private TabStatus tabStatus ;
     private List<Song> songsList ;
+    private List<Album> albumList;
 
     private Callbacks mCallbacks;
 
@@ -77,11 +79,13 @@ public class TabFragment extends Fragment {
         initUi(view);
 
         songsList = Repository.getInstance(getContext()).getSongs();
+        albumList = Repository.getInstance(getContext()).getAlbumList();
         switch (tabStatus){
             case SONGS:
                 setSongsRecyclerView();
                 break;
             case ALBUMS:
+                setAlbumsRecyclerView();
                 break;
             case ARTISTS:
                 break;
@@ -98,6 +102,12 @@ public class TabFragment extends Fragment {
         SongsAdapter songsAdapter = new SongsAdapter(getContext() , songsList , this , recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(songsAdapter);
+    }
+
+    private void setAlbumsRecyclerView(){
+        AlbumsAdapter albumsAdapter = new AlbumsAdapter(getContext() , albumList , this , recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(albumsAdapter);
     }
 
     public interface Callbacks {

@@ -2,6 +2,7 @@ package com.example.musicplayer;
 
 
 import android.drm.DrmStore;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.example.musicplayer.model.Repository;
 import com.example.musicplayer.model.Song;
 import com.google.android.material.button.MaterialButton;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,6 +40,7 @@ public class NowplayingFragment extends Fragment {
     private TextView nameTextView;
     private TextView artistNameTextView;
     private TextView elapsedTimeTextView, songTimeTextView;
+    private ImageView songImageView ;
     private Handler mHandler = new Handler();
     private List<Song> songList ;
     private Song nowPlayingSong;
@@ -131,6 +135,7 @@ public class NowplayingFragment extends Fragment {
         artistNameTextView = view.findViewById(R.id.artistName_TextView_NowPalying);
         elapsedTimeTextView = view.findViewById(R.id.elapsedTime_TextView);
         songTimeTextView = view.findViewById(R.id.songTime_TextView);
+        songImageView = view.findViewById(R.id.imageView_nowPlaying);
     }
 
     public void setSeekBar() {
@@ -145,6 +150,7 @@ public class NowplayingFragment extends Fragment {
     public void setDetail(Song song) {
         nameTextView.setText(song.getName());
         artistNameTextView.setText(song.getArtist());
+        Picasso.get().load(Uri.parse(song.getSongFullPath())).fit().into(songImageView);
         timeSeekBar.setMax(mediaPlayer.getDuration() / 1000);
         Repository.getInstance(getContext()).setCurrentSong(song);
         songTimeTextView.setText(convertDuration(mediaPlayer.getDuration() / 1000));
@@ -188,7 +194,7 @@ public class NowplayingFragment extends Fragment {
     }
 
     public void onPreviousButtonClicked() {
-        if (songIndex == songList.size() - 1) {
+        if (songIndex == 0) {
             //if last in playlist
             songIndex = songList.size() -1 ;
             nowPlayingSong = songList.get(songIndex);
